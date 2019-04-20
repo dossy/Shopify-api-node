@@ -71,4 +71,17 @@ Asset.prototype.delete = function remove(themeId, params) {
   return this.shopify.request(url, 'DELETE');
 };
 
+/**
+ * Get version information for an asset.
+ *
+ * @param {Number} themeId Theme ID
+ * @param {Object} params Query parameters
+ * @return {Promise} Promise that resolves with the result
+ * @public
+ */
+Asset.prototype.version = function version(themeId, params) {
+  const url = this.buildUrl(themeId, `${id}/versions`, params);
+  return this.shopify.request(url, 'GET', this.key);
+};
+
 module.exports = Asset;
