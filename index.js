@@ -122,7 +122,7 @@ Shopify.prototype.request = function request(url, method, key, params) {
     options.body = body;
   }
 
-  if (this.debug) console.log(url, method, key, params, options);
+  if (this.debug) console.log({ url, method, key, params, options });
 
   return got(options).then(res => {
     const body = res.body;
