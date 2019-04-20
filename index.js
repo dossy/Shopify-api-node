@@ -102,9 +102,14 @@ Shopify.prototype.request = function request(url, method, key, params) {
     headers: { 'User-Agent': `${pkg.name}/${pkg.version}` },
     timeout: this.options.timeout,
     json: true,
+    graphql: false,
     retries: 0,
     method
   }, url);
+
+  if (options.graphql) {
+    options.headers['Content-Type'] = 'application/graphql';
+  }
 
   if (this.options.accessToken) {
     options.headers['X-Shopify-Access-Token'] = this.options.accessToken;
